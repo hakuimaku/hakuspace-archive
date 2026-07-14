@@ -61,32 +61,6 @@ This repository contains a **post-install setup script** for Haku Space visual a
 
 ---
 
-## <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=32&pause=4000&color=68818F&center=false&vCenter=false&repeat=true&width=900&lines=Installation+Guide" alt="Typing SVG" />
-
-### 1. Clone this repository
-
-```bash
-cd ~
-git clone https://github.com/<your-account>/<your-assets-repo>.git
-cd <your-assets-repo>
-```
-
-### 2. Make script executable
-
-```bash
-chmod +x setup.sh
-```
-
-### 3. Run setup
-
-```bash
-./setup.sh
-```
-
-Follow the interactive prompts and select what you want to install.
-
----
-
 ## <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=32&pause=4000&color=68818F&center=false&vCenter=false&repeat=true&width=900&lines=Install+Locations" alt="Typing SVG" />
 
 - Icons: `~/.icons`
