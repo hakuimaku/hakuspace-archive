@@ -28,88 +28,22 @@ This repository contains a **post-install setup script** for Haku Space visual a
 
 ---
 
-## <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=32&pause=4000&color=68818F&center=false&vCenter=false&repeat=true&width=900&lines=What+this+script+does" alt="Typing SVG" />
-
-`setup.sh` will interactively ask what you want to install:
-
-1. **Bibata Cursor**
-   - Option 1: Install full Bibata cursor package via `yay`
-   - Option 2: Extract local `Bibata-Modern-Ice.tar.gz` from `~/hakuspace-archive`
-   - Option 0: Skip
-
-2. **Tela Icon Theme**
-   - Clone `vinceliuice/Tela-icon-theme`
-   - Run `install.sh` with black variant into `~/.icons`
-
-3. **Midnight Gray Theme**
-   - Clone `i-mint/midnight`
-   - Copy `Midnight-Gray` into `~/.themes`
-
-4. **Wallpapers**
-   - Copy from `~/hakuspace-archive/Wallpapers` to `~/Pictures/Wallpapers`
-
----
-
-## <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=32&pause=4000&color=68818F&center=false&vCenter=false&repeat=true&width=900&lines=Requirements" alt="Typing SVG" />
-
-- Arch Linux / Arch-based distro
-- `bash`
-- `git`
-- `tar`
-- `yay` (only required if you choose Bibata option 1)
-- Local asset archive at: `~/hakuspace-archive`
-
----
-
-## <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=32&pause=4000&color=68818F&center=false&vCenter=false&repeat=true&width=900&lines=Install+Locations" alt="Typing SVG" />
-
-- Icons: `~/.icons`
-- Themes: `~/.themes`
-- Wallpapers: `~/Pictures/Wallpapers`
-
----
-
-## <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=32&pause=4000&color=68818F&center=false&vCenter=false&repeat=true&width=900&lines=Troubleshooting" alt="Typing SVG" />
-
-- If `yay` is missing, Bibata option 1 will fail.  
-  Install `yay` first, or use Bibata option 2 (local tarball).
-- If `git clone` fails, check your internet connection.
-- If wallpapers/themes/icons are not copied, verify `~/hakuspace-archive` exists and contains required files.
-- If anything breaks, run the script directly in terminal and read the exact error output.
-
----
-
 ## <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=32&pause=4000&color=68818F&center=false&vCenter=false&repeat=true&width=900&lines=Credits" alt="Typing SVG" />
 
-- Cursor: [Bibata Cursor](https://github.com/ful1e5/Bibata_Cursor)
-- Icons: [Tela Icon Theme](https://github.com/vinceliuice/Tela-icon-theme)
-- Theme: [Midnight](https://github.com/i-mint/midnight)
-- Main dotfiles project: [Haku Space](https://github.com/hakuimaku/hakuspace)
+Themes, Icons and Wallpapers belong to their respective creators.
 
----
-
-<div align="center">
-
-### Just chill ✨
-
-If you like this setup, give the main repo a ⭐
-
-</div>
-
----
-
-*Themes, Icons and Wallpapers used in Haku Space:*
 - Theme: [Midnight-Gray](https://www.gnome-look.org/p/1273208)
 - Icons: [Tela-black](https://www.gnome-look.org/p/1279924)
 - Mouse Cursor: [Bibata-Modern-Ice](https://www.gnome-look.org/p/1197198)
 - Wallpapers Artists:
-  - [zrxrevolutionz](https://www.deviantart.com/zrxrevolutionz)
-  - [かづいせ](https://www.pixiv.net/en/users/1031168)
-  - [airfish 空气鱼](https://www.pixiv.net/en/users/67512705)
-  - [Android/アンドロイド](https://www.pixiv.net/en/users/67750556)
-  - [Roby0174](https://www.deviantart.com/roby0174)
-  - [越前蟹参号](https://www.pixiv.net/en/users/98660769)
-  - [mmAir](https://www.pixiv.net/en/users/39363802)
-  - [ゲン助](https://www.pixiv.net/en/users/32008)
 
-Themes, Icons and Wallpapers belong to their respective creators.
+| Artist | Artworks |
+|--------|----------|
+| [Android/アンドロイド](https://www.pixiv.net/en/users/67750556) | <img width="350" alt="image" src="https://github.com/user-attachments/assets/12b670c3-5528-4f86-a219-7e6f1b483922" /> |
+| [airfish 空气鱼](https://www.pixiv.net/en/users/67512705) | <img width="350" alt="image" src="https://github.com/user-attachments/assets/a1fedb03-36f0-401e-acd3-4a950431bc99" /> |
+| [ゲン助](https://www.pixiv.net/en/users/32008) | <img width="350" alt="image" src="https://github.com/user-attachments/assets/0ce8ef6f-1dda-4db8-af70-a08ff2f1be3e" /> |
+| [mmAir](https://www.pixiv.net/en/users/39363802) | <img width="350" alt="image" src="https://github.com/user-attachments/assets/d23e6cfc-d2fb-4f5c-bea6-7108b8c725e5" /> |
+| [越前蟹参号](https://www.pixiv.net/en/users/98660769) | <img width="350" alt="image" src="https://github.com/user-attachments/assets/cb51761b-dcb9-44be-9849-a2f2e0a9b043" /> |
+| [かづいせ](https://www.pixiv.net/en/users/1031168) | <img width="350" alt="image" src="https://github.com/user-attachments/assets/fe00efbf-a191-4c57-a3bc-cefc6e2c8e7b" /> |
+| [zrxrevolutionz](https://www.deviantart.com/zrxrevolutionz) | <img width="260" alt="image" src="https://github.com/user-attachments/assets/8f86746b-a7fa-4e9b-bfe7-421cea7f1bb8" /> <img width="260" alt="image" src="https://github.com/user-attachments/assets/e554212f-ca32-4114-b9a0-a010f6307efd" /> |
+| [Roby0174](https://www.deviantart.com/roby0174) | <img width="350" alt="image" src="https://github.com/user-attachments/assets/1c6b5ef2-26b9-4aab-9105-f343fbb397f5" /> |
