@@ -71,6 +71,7 @@ echo ""
 read -p ">>> Do you want to copy wallpapers to ~/Pictures/Wallpapers/? (y/n): " copy_wallpapers
 if [[ "$copy_wallpapers" =~ ^[Yy]$ ]]; then
     echo ":: Copying Wallpapers..."
+    mkdir -p $WALLPAPER_DIR
     cp -r $HAKU_DIR/Wallpapers/* $WALLPAPER_DIR/
 fi
 
