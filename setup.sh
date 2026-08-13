@@ -5,7 +5,7 @@ if { [ -f "/etc/nixos/configuration.nix" ] || ! command -v git >/dev/null 2>&1; 
     if command -v nix-shell >/dev/null 2>&1; then
         echo ":: Nix environment detected. Relaunching with required tools (git, tar, gtk3)..."
         export IN_NIX_SHELL=1
-        exec nix-shell -p git tar gtk3 --run "bash \"$0\" \"$@\""
+        exec nix-shell -p git gnutar gtk3 --run "bash \"$0\" \"$@\""
     fi
 fi
 
@@ -34,8 +34,8 @@ case $cursor_choice in
             echo ":: Installing Full Bibata Cursor Theme..."
             yay -S bibata-cursor-theme-bin
         else
-            echo "[!] 'yay' is not installed (NixOS detected?)."
-            echo ":: Please add 'bibata-cursors' directly to your Nix configuration (e.g., configuration.nix or flake.nix)."
+            echo "[!] 'yay' is not installed."
+            echo ":: You can choose option 2 to install Bibata-Modern-Ice.tar.gz from the hakuspace-archive."
         fi
         ;;
     2)
