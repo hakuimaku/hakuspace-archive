@@ -20,45 +20,21 @@ mkdir -p "$ICON_DIR" "$THEME_DIR" "$WALLPAPER_DIR"
 # Install Bibata Cursor
 # https://github.com/ful1e5/Bibata_Cursor
 
-echo "Installing Mouse Cursor: Bibata Cursor Theme..."
 echo ""
-echo " [1]. Full icons (yay -S bibata-cursor-theme-bin, source) - full set of icons"
-echo " [2]. Bibata-Modern-Ice.tar.gz (from hakuspace-archive) - only one icon set"
-echo " [0]. Skip installation"
-echo ""
+echo "Cursor Setup:"
+read -p ">>> Do you want to install Bibata Cursor Theme? (y/n): " install_bibata
+if [[ "$install_bibata" =~ ^[Yy]$ ]]; then
+    echo ":: Installing Bibata Cursor Theme..."
+    echo ":: Extracting Bibata Cursor Theme to ~/.icons/..."
+    tar -xzf "$HAKU_DIR/Bibata-Modern-Ice.tar.gz" -C "$ICON_DIR"
+fi
 
-read -p ">>> Select an option (1 or 2): " cursor_choice
-case $cursor_choice in
-    1)
-        if command -v yay >/dev/null 2>&1; then
-            echo ":: Installing Full Bibata Cursor Theme..."
-            yay -S bibata-cursor-theme-bin
-        else
-            echo "[!] 'yay' is not installed."
-            echo ":: You can choose option 2 to install Bibata-Modern-Ice.tar.gz from the hakuspace-archive."
-        fi
-        ;;
-    2)
-        echo ":: Installing Bibata-Modern-Ice.tar.gz..."
-        if [ -f "$HAKU_DIR/Bibata-Modern-Ice.tar.gz" ]; then
-            tar -xzf "$HAKU_DIR/Bibata-Modern-Ice.tar.gz" -C "$ICON_DIR"
-        else
-            echo "[!] Archive not found: $HAKU_DIR/Bibata-Modern-Ice.tar.gz"
-        fi
-        ;;
-    0)
-        echo ":: Skipping Bibata Cursor installation."
-        ;;
-    *)
-        echo "[!] Invalid option. Please select 1 or 2."
-        exit 1
-        ;;
-esac
 
 # Install Tela Icon Theme
 # https://github.com/vinceliuice/Tela-icon-theme
 
 echo ""
+echo "Icons Setup:"
 read -p ">>> Do you want to install Tela Icon Theme? (y/n): " install_tela
 if [[ "$install_tela" =~ ^[Yy]$ ]]; then
     echo ":: Installing Tela Icon Theme..."
@@ -76,6 +52,7 @@ fi
 # https://github.com/i-mint/midnight
 
 echo ""
+echo "Theme (Widget) Setup:"
 read -p ">>> Do you want to install Midnight Gray Theme? (y/n): " install_midnight
 if [[ "$install_midnight" =~ ^[Yy]$ ]]; then
     echo ":: Installing Midnight Gray Theme..."
@@ -89,6 +66,7 @@ fi
 # Copy Wallpapers
 
 echo ""
+echo "Wallpaper Setup:"
 read -p ">>> Do you want to copy wallpapers to ~/Pictures/Wallpapers/? (y/n): " copy_wallpapers
 if [[ "$copy_wallpapers" =~ ^[Yy]$ ]]; then
     echo ":: Copying Wallpapers..."
