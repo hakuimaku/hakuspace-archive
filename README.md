@@ -5,15 +5,9 @@ Install Icons, Themes, and Wallpapers for Haku Space
 
 </div>
 
-<p align="center">
-    <a href="https://archlinux.org/"><img alt="Arch Linux" src="https://img.shields.io/badge/Arch%20Linux-%231f1f1f?style=for-the-badge&logo=archlinux&logoColor=%231f1f1f&labelColor=%2368818f&color=%231f1f1f"></a>&nbsp;
-    <a href="https://github.com/hakuimaku/hakuspace"><img alt="HakuSpace" src="https://img.shields.io/badge/HakuSpace-%231f1f1f?style=for-the-badge&logo=github&logoColor=%231f1f1f&labelColor=%2368818f&color=%231f1f1f"></a>&nbsp;
-    <a href="https://github.com/hakuimaku/hakuspace/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/hakuimaku/hakuspace?style=for-the-badge&label=Stars&labelColor=%2368818f&color=%231f1f1f&logo=github&logoColor=%231f1f1f"></a>&nbsp;
-</p>
-
 ---
 
-## <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=32&pause=4000&color=68818F&center=false&vCenter=false&repeat=true&width=900&lines=Welcome" alt="Typing SVG" />
+## Welcome
 
 This repository contains a **post-install setup script** for Haku Space visual assets:
 
@@ -28,7 +22,7 @@ This repository contains a **post-install setup script** for Haku Space visual a
 
 ---
 
-## <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=32&pause=4000&color=68818F&center=false&vCenter=false&repeat=true&width=900&lines=Credits" alt="Typing SVG" />
+## Credits
 
 Themes, Icons and Wallpapers belong to their respective creators.
 
@@ -51,5 +45,7 @@ Themes, Icons and Wallpapers belong to their respective creators.
 | **[Gracile](https://www.pixiv.net/en/users/3434849)** | <img width="350" alt="image" src="https://github.com/user-attachments/assets/3f6a3fda-eb9d-4311-b65c-0a7a156d7b4c" /> <img width="350" alt="image" src="https://github.com/user-attachments/assets/8bc623d0-cb80-46d3-8195-11cb20bc5c72" /> <img width="350" alt="image" src="https://github.com/user-attachments/assets/fe057adf-4126-4ef4-8fd3-a8795d257d5b" /> <img width="350" alt="image" src="https://github.com/user-attachments/assets/77bb1bc5-6b1e-408c-abac-d02f16457a49" /> <img width="350" alt="image" src="https://github.com/user-attachments/assets/079c1c7f-969a-480d-91b6-e270e2d93602" /> <img width="350" alt="image" src="https://github.com/user-attachments/assets/1876a073-305d-42b4-8d46-abc7416c0cd7" /> <img width="350" alt="image" src="https://github.com/user-attachments/assets/e3fffc0d-4be5-44d3-8339-75fd50ce2712" /> |
 | **[zrxrevolutionz](https://www.deviantart.com/zrxrevolutionz)** | <img width="350" alt="image" src="https://github.com/user-attachments/assets/8f86746b-a7fa-4e9b-bfe7-421cea7f1bb8" /> <img width="350" alt="image" src="https://github.com/user-attachments/assets/e554212f-ca32-4114-b9a0-a010f6307efd" /> |
 | **[Roby0174](https://www.deviantart.com/roby0174)** | <img width="350" alt="image" src="https://github.com/user-attachments/assets/1c6b5ef2-26b9-4aab-9105-f343fbb397f5" /> |
+| **[Mk](https://www.pixiv.net/en/users/103781220)** | <img width="350" alt="image" src="https://github.com/user-attachments/assets/fc00c4ea-45d5-4347-9f75-b7de72df4324" /> |
+| **[茶杯雨、](https://www.pixiv.net/en/users/80531324)** | <img width="350" alt="image" src="https://github.com/user-attachments/assets/da4e9466-0313-4951-ba92-02ea89129460" /> |
 
 </div>
