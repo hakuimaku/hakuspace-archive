@@ -47,5 +47,11 @@ Themes, Icons and Wallpapers belong to their respective creators.
 | **[Roby0174](https://www.deviantart.com/roby0174)** | <img width="350" alt="image" src="https://github.com/user-attachments/assets/1c6b5ef2-26b9-4aab-9105-f343fbb397f5" /> |
 | **[Mk](https://www.pixiv.net/en/users/103781220)** | <img width="350" alt="image" src="https://github.com/user-attachments/assets/fc00c4ea-45d5-4347-9f75-b7de72df4324" /> |
 | **[茶杯雨、](https://www.pixiv.net/en/users/80531324)** | <img width="350" alt="image" src="https://github.com/user-attachments/assets/da4e9466-0313-4951-ba92-02ea89129460" /> |
+| **[Toilet_chicken](https://www.pixiv.net/en/users/61332935)**  | <img width="350" alt="image" src="https://github.com/user-attachments/assets/de5c9ba9-55b0-4ef6-a6d0-daf892772b26" /> |
+| **[邦乔彦](https://www.pixiv.net/en/users/10746425)** | <img width="350" alt="image" src="https://github.com/user-attachments/assets/2e10e9a2-4226-4805-87bc-5ac45854fb07" /> |
+| **[Nona](https://www.pixiv.net/en/users/110945671)** | <img width="350" alt="148907461_p0" src="https://github.com/user-attachments/assets/ee347dbe-c391-47e0-b76c-aabf2e9fb9c2" /> |
+| **[りゃね](https://www.pixiv.net/en/users/120015975)**  | <img width="350" alt="image" src="https://github.com/user-attachments/assets/a2610939-3e01-4aa0-923f-b37f38404a22" /> |
+| **[瑜璟](https://www.pixiv.net/en/users/73110986)** | <img width="350" alt="98338327_p0" src="https://github.com/user-attachments/assets/6b87a98c-226a-4e26-98cf-b347dda61593" /> |
+| unknown | <img width="350" alt="image" src="https://github.com/user-attachments/assets/7d490fb5-fea6-4ce7-a6c6-42dd218db194" /> |
 
 </div>
