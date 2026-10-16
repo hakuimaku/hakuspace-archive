@@ -1,81 +1,34 @@
 #!/usr/bin/env bash
+# Installation only. HakuSpace owns activation and runtime synchronization.
+set -euo pipefail
 
-# Relaunch script within nix-shell if we are on NixOS or missing core tools
-if { [ -f "/etc/nixos/configuration.nix" ] || ! command -v git >/dev/null 2>&1; } && [ -z "$IN_NIX_SHELL" ]; then
-    if command -v nix-shell >/dev/null 2>&1; then
-        echo ":: Nix environment detected. Relaunching with required tools (git, tar, gtk3)..."
-        export IN_NIX_SHELL=1
-        exec nix-shell -p git gnutar gtk3 --run "bash \"$0\" \"$@\""
-    fi
+ARCHIVE_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+for module in common source_repo install_cursor install_gtk_theme install_icons verify_assets cleanup_legacy_icon_accent; do
+    source "$ARCHIVE_ROOT/lib/$module.sh"
+done
+
+case "${1:-}" in
+    --help|-h)
+        echo 'Usage: setup.sh [--no-wallpapers]'
+        echo 'Install Haku Cursor, Hikaide, Hikaide-Symbols; copy wallpapers by default.'
+        exit 0 ;;
+    ''|--no-wallpapers) ;;
+    *) fail "Unknown option: $1" ;;
+esac
+
+export PATH="$HOME/.local/bin:$PATH"
+HAKU_CURSOR_SOURCE="$(source_repo haku-cursor "${HAKU_CURSOR_SOURCE:-}")"
+HAKU_GTK_THEME_SOURCE="$(source_repo hikade-gtk-theme "${HAKU_GTK_THEME_SOURCE:-}")"
+HAKU_ICON_THEME_SOURCE="$(source_repo hikaide-symbols "${HAKU_ICON_THEME_SOURCE:-}")"
+
+install_cursor
+install_gtk_theme
+install_icons
+verify_assets
+cleanup_legacy_icon_accent
+if [[ "${1:-}" != --no-wallpapers && -d "$ARCHIVE_ROOT/Wallpapers" ]]; then
+    mkdir -p "$HOME/Pictures/Wallpapers"
+    cp -an "$ARCHIVE_ROOT/Wallpapers/." "$HOME/Pictures/Wallpapers/"
 fi
-
-HAKU_DIR="$HOME/hakuspace-archive"
-ICON_DIR="$HOME/.icons"
-THEME_DIR="$HOME/.themes"
-WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
-
-# Ensure directories exist
-mkdir -p "$ICON_DIR" "$THEME_DIR" "$WALLPAPER_DIR"
-
-# Install Bibata Cursor
-# https://github.com/ful1e5/Bibata_Cursor
-
-echo ""
-echo "Cursor Setup:"
-read -p ">>> Do you want to install Bibata Cursor Theme? (y/n): " install_bibata
-if [[ "$install_bibata" =~ ^[Yy]$ ]]; then
-    echo ":: Installing Bibata Cursor Theme..."
-    echo ":: Extracting Bibata Cursor Theme to ~/.icons/..."
-    tar -xzf "$HAKU_DIR/Bibata-Modern-Ice.tar.gz" -C "$ICON_DIR"
-fi
-
-
-# Install Tela Icon Theme
-# https://github.com/vinceliuice/Tela-icon-theme
-
-echo ""
-echo "Icons Setup:"
-read -p ">>> Do you want to install Tela Icon Theme? (y/n): " install_tela
-if [[ "$install_tela" =~ ^[Yy]$ ]]; then
-    echo ":: Installing Tela Icon Theme..."
-    echo ":: Cloning Tela Icon Theme repository..."
-    git clone https://github.com/vinceliuice/Tela-icon-theme "$HAKU_DIR/Tela-icon-theme"
-    echo ":: Installing Tela Icon Theme..."
-    cd "$HAKU_DIR/Tela-icon-theme" || exit 1
-    ./install.sh -d "$ICON_DIR" -c "black"
-    cd - >/dev/null || exit 1
-    rm -rf "$HAKU_DIR/Tela-icon-theme"
-fi
-
-
-# Install Midnight Theme
-# https://github.com/i-mint/midnight
-
-echo ""
-echo "Theme (Widget) Setup:"
-read -p ">>> Do you want to install Midnight Gray Theme? (y/n): " install_midnight
-if [[ "$install_midnight" =~ ^[Yy]$ ]]; then
-    echo ":: Installing Midnight Gray Theme..."
-    echo ":: Cloning Midnight Theme repository..."
-    git clone https://github.com/i-mint/midnight "$HAKU_DIR/midnight"
-    echo ":: Copying Midnight Gray Theme to ~/.themes/..."
-    cp -r "$HAKU_DIR/midnight/Midnight-Gray" "$THEME_DIR/"
-    rm -rf "$HAKU_DIR/midnight"
-fi
-
-# Copy Wallpapers
-
-echo ""
-echo "Wallpaper Setup:"
-read -p ">>> Do you want to copy wallpapers to ~/Pictures/Wallpapers/? (y/n): " copy_wallpapers
-if [[ "$copy_wallpapers" =~ ^[Yy]$ ]]; then
-    echo ":: Copying Wallpapers..."
-    if [ -d "$HAKU_DIR/Wallpapers" ]; then
-        cp -r "$HAKU_DIR/Wallpapers/"* "$WALLPAPER_DIR/"
-    else
-        echo "[!] Wallpapers folder not found in archive."
-    fi
-fi
-
-echo ""
-echo "Setup completed."
+write_manifest
+printf 'Haku visual assets installed. HakuSpace can now activate and synchronize them.\n'

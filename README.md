@@ -11,9 +11,9 @@ Install Icons, Themes, and Wallpapers for Haku Space
 
 This repository contains a **post-install setup script** for Haku Space visual assets:
 
-- Mouse Cursor (Bibata)
-- Icon Theme (Tela)
-- GTK Theme (Midnight Gray)
+- [Haku Cursor](https://github.com/hakuimaku/haku-cursor) (default palette: blue)
+- [Hikaide GTK](https://github.com/hakuimaku/hikade-gtk-theme)
+- [Hikaide-Symbols](https://github.com/hakuimaku/hikaide-symbols)
 - Wallpapers
 
 > [!Important]
@@ -22,13 +22,91 @@ This repository contains a **post-install setup script** for Haku Space visual a
 
 ---
 
+## Installation
+
+Run `bash setup.sh` after installing HakuSpace core. Use `--no-wallpapers` to
+skip copying wallpapers. Existing wallpaper files are preserved.
+
+Requirements: Bash, Git, Make, Python 3, and the upstream cursor build dependencies
+(`rsvg-convert` / `xcursorgen`, or Pillow for the supported fallback). On NixOS,
+run inside a development shell providing these tools; the installer does not
+install system packages.
+
+Sources are shallow-cloned into `${XDG_CACHE_HOME:-$HOME/.cache}/hakuspace/assets-src/`.
+Clean cached checkouts update with `git pull --ff-only`; dirty or divergent
+checkouts are left untouched. Explicit source overrides are used as-is:
+
+```bash
+HAKU_CURSOR_SOURCE=~/haku-cursor \
+HAKU_GTK_THEME_SOURCE=~/hikade-gtk-theme \
+HAKU_ICON_THEME_SOURCE=~/hikaide-symbols bash setup.sh
+```
+
+The installer calls each project's build/validation/installation tools. It
+refuses unmanaged Hikaide-Symbols, unrecognized GTK themes and unmarked cursor
+directories. Previously installed Haku cursors without an archive ownership
+marker must be preserved/moved out of the target before installation. Legacy
+accent-engine files are preserved unless verified by their installation checksum receipt (see migration below).
+
+| Installed asset | Location |
+| --- | --- |
+| Hikaide | `~/.themes/Hikaide` |
+| Hikaide-Symbols | `~/.icons/Hikaide-Symbols` |
+| Haku Cursor | `${XDG_DATA_HOME:-$HOME/.local/share}/icons/Haku-Blue` |
+| Installation manifest | `~/.local/state/hakuspace/assets/installed.env` |
+
+The cursor palette default lives in `lib/common.sh` (`blue`). Override it with
+`HAKU_CURSOR_PALETTE=pink`, or set it persistently in
+`${XDG_CONFIG_HOME:-$HOME/.config}/hakuspace/appearance.env`. HakuSpace reads the
+same user configuration and derives `Haku-Pink`.
+
+This repository owns **installation/update**, not activation. HakuSpace's
+`scripts/assets.sh` runs this installer, verifies/selects appearance, then runs
+`theme_ctl.sh apply` to reconcile the canonical accent. When running setup
+standalone, run those HakuSpace commands afterward. The manifest is installation
+metadata, never runtime theme state.
+
+After installation, this checkout and the source cache can be deleted. Runtime
+needs only installed assets and HakuSpace core/state. Safe icon recoloring is
+implemented inside HakuSpace; this archive neither clones nor installs an accent
+engine.
+There is no watcher or daemon. Cursor builds and GTK CSS do not follow desktop
+accent changes. HakuSpace decides which installed icons follow its accent.
+
+## Legacy installation migration
+
+On update, the installer checks the old
+`~/.local/state/hakuspace/assets/icon-accent.sha256` receipt. It removes
+`~/.local/bin/icon-accent`, `~/.local/bin/icon_accent.py` and that receipt only
+when the receipt exactly matches both regular installed files and their paths.
+Modified, missing, symlinked or unmanaged files are preserved; unsafe/mismatched
+receipts produce a warning. This migration does not touch accent backups and
+never runs at session startup. The new installation manifest has only cursor,
+GTK and icon-theme metadata.
+
+HakuSpace can opt out of icon management with `HAKU_ICON_THEME=system` or disable
+recoloring with `HAKU_ICON_ACCENT_MODE=off`. Its default `auto` mode recolors only
+managed Hikaide-Symbols; `on` explicitly opts in for compatible user-owned themes.
+Those settings belong to HakuSpace runtime, not this asset installer.
+
+## Tests
+
+```bash
+python3 -m unittest discover -s tests -v
+# From a directory containing HakuSpace, this archive and the three asset sources:
+HAKUSPACE_TEST_ASSET_REPOS="$PWD" python3 hakuspace/scripts/test_visual_ecosystem.py -v
+```
+
+The integration test uses a temporary HOME and local source overrides, exercises
+fresh/update/reinstall/archive-removal paths, and never activates host settings.
+
 ## Credits
 
 Themes, Icons and Wallpapers belong to their respective creators.
 
-- Theme: [Midnight-Gray](https://www.gnome-look.org/p/1273208)
-- Icons: [Tela-black](https://www.gnome-look.org/p/1279924)
-- Mouse Cursor: [Bibata-Modern-Ice](https://www.gnome-look.org/p/1197198)
+- GTK theme: [Hikaide](https://github.com/hakuimaku/hikade-gtk-theme)
+- Icons: [Hikaide-Symbols](https://github.com/hakuimaku/hikaide-symbols)
+- Cursor: [Haku Cursor](https://github.com/hakuimaku/haku-cursor)
 - Wallpapers Artists:
 
 <div align="center">
