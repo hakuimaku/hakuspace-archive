@@ -11,7 +11,7 @@ Install Icons, Themes, and Wallpapers for Haku Space
 
 This repository contains a **post-install setup script** for Haku Space visual assets:
 
-- [Haku Cursor](https://github.com/hakuimaku/haku-cursor) (default palette: blue)
+- [Haku Cursor](https://github.com/hakuimaku/haku-cursor) (default: Haku-Dark)
 - [Hikaide GTK](https://github.com/hakuimaku/hikade-gtk-theme)
 - [Hikaide-Symbols](https://github.com/hakuimaku/hikaide-symbols)
 - Wallpapers
@@ -52,13 +52,32 @@ accent-engine files are preserved unless verified by their installation checksum
 | --- | --- |
 | Hikaide | `~/.themes/Hikaide` |
 | Hikaide-Symbols | `~/.icons/Hikaide-Symbols` |
-| Haku Cursor | `${XDG_DATA_HOME:-$HOME/.local/share}/icons/Haku-Blue` |
+| Haku Cursor | `~/.icons/Haku-Dark` |
 | Installation manifest | `~/.local/state/hakuspace/assets/installed.env` |
 
-The cursor palette default lives in `lib/common.sh` (`blue`). Override it with
-`HAKU_CURSOR_PALETTE=pink`, or set it persistently in
-`${XDG_CONFIG_HOME:-$HOME/.config}/hakuspace/appearance.env`. HakuSpace reads the
-same user configuration and derives `Haku-Pink`.
+The exact cursor theme is configured with `HAKU_CURSOR_THEME` (default:
+`Haku-Dark`) in the environment or
+`${XDG_CONFIG_HOME:-$HOME/.config}/hakuspace/appearance.env`, shared with HakuSpace:
+
+```bash
+HAKU_CURSOR_THEME=Haku-Dark
+# HAKU_CURSOR_THEME=Haku-Light
+# HAKU_CURSOR_THEME=Haku-Blue-Light
+```
+
+Colour themes such as Haku-Blue/Haku-Blue-Light and Haku-Pink/Haku-Pink-Light
+are optional. The installer resolves the name into one upstream build target and
+style, then installs the exact theme selector under `~/.icons`. It never passes
+a palette selector that could install both variants. Only the selected target's
+ownership is checked/replaced; sibling variants are left untouched. Upstream
+animation defaults are preserved.
+
+Deprecated `HAKU_CURSOR_PALETTE=blue` remains a fallback for one compatibility
+cycle, mapping to Haku-Blue (dark variant). Explicit theme wins over legacy
+palette; when neither is configured the default is Haku-Dark. Prefer theme names
+for new configuration. Old managed XDG installations are not moved or deleted.
+The manifest records `HAKU_CURSOR_THEME`, `HAKU_CURSOR_PATH` and source revision;
+these are installation metadata, not runtime state.
 
 This repository owns **installation/update**, not activation. HakuSpace's
 `scripts/assets.sh` runs this installer, verifies/selects appearance, then runs
