@@ -10,7 +10,7 @@ done
 case "${1:-}" in
     --help|-h)
         echo 'Usage: setup.sh [--no-wallpapers]'
-        echo 'Install Haku Cursor, Hikaide, Hikaide-Symbols; copy wallpapers by default.'
+        echo 'Install Haku Cursor, Hikaide, Hikaide-Light, Hikaide-Symbols, Hikaide-Symbols-Light; copy wallpapers by default.'
         exit 0 ;;
     ''|--no-wallpapers) ;;
     *) fail "Unknown option: $1" ;;

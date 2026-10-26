@@ -12,8 +12,8 @@ Install Icons, Themes, and Wallpapers for Haku Space
 This repository contains a **post-install setup script** for Haku Space visual assets:
 
 - [Haku Cursor](https://github.com/hakuimaku/haku-cursor) (default: Haku-Dark)
-- [Hikaide GTK](https://github.com/hakuimaku/hikade-gtk-theme)
-- [Hikaide-Symbols](https://github.com/hakuimaku/hikaide-symbols)
+- [Hikaide GTK](https://github.com/hakuimaku/hikade-gtk-theme) (Hikaide, Hikaide-Light)
+- [Hikaide-Symbols](https://github.com/hakuimaku/hikaide-symbols) (Hikaide-Symbols, Hikaide-Symbols-Light)
 - Wallpapers
 
 > [!Important]
@@ -43,15 +43,18 @@ HAKU_ICON_THEME_SOURCE=~/hikaide-symbols bash setup.sh
 ```
 
 The installer calls each project's build/validation/installation tools. It
-refuses unmanaged Hikaide-Symbols, unrecognized GTK themes and unmarked cursor
-directories. Previously installed Haku cursors without an archive ownership
-marker must be preserved/moved out of the target before installation. Legacy
-accent-engine files are preserved unless verified by their installation checksum receipt (see migration below).
+refuses unmanaged Hikaide-Symbols / Hikaide-Symbols-Light, unrecognized GTK themes
+and unmarked cursor directories. Previously installed Haku cursors without an
+archive ownership marker must be preserved/moved out of the target before installation.
+Legacy accent-engine files are preserved unless verified by their installation checksum
+receipt (see migration below).
 
 | Installed asset | Location |
 | --- | --- |
 | Hikaide | `~/.themes/Hikaide` |
+| Hikaide-Light | `~/.themes/Hikaide-Light` |
 | Hikaide-Symbols | `~/.icons/Hikaide-Symbols` |
+| Hikaide-Symbols-Light | `~/.icons/Hikaide-Symbols-Light` |
 | Haku Cursor | `~/.icons/Haku-Dark` |
 | Installation manifest | `~/.local/state/hakuspace/assets/installed.env` |
 

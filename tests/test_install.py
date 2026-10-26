@@ -227,14 +227,64 @@ for variant in styles:
 
     def test_cursor_manifest_and_verification_use_home_icons(self):
         self.assert_selected_cursor("Haku-Dark", "dark", "dark")
-        for relative in (".themes/Hikaide", ".icons/Hikaide-Symbols"):
+        for relative in (".themes/Hikaide", ".themes/Hikaide-Light",
+                         ".icons/Hikaide-Symbols", ".icons/Hikaide-Symbols-Light"):
             directory = self.home / relative
             directory.mkdir(parents=True)
             (directory / "index.theme").touch()
         self.env.update(HAKU_GTK_THEME_SOURCE=str(ROOT), HAKU_ICON_THEME_SOURCE=str(ROOT))
-        result = self.run_shell(f'source "{ROOT}/lib/verify_assets.sh"; verify_assets; write_manifest; source "$ASSET_STATE_DIR/installed.env"; printf "%s\\n%s\\n" "$HAKU_CURSOR_THEME" "$HAKU_CURSOR_PATH"')
+        result = self.run_shell(
+            f'source "{ROOT}/lib/verify_assets.sh"; verify_assets; write_manifest; '
+            'source "$ASSET_STATE_DIR/installed.env"; '
+            'printf "%s\\n%s\\n%s\\n%s\\n" "$HAKU_CURSOR_THEME" "$HAKU_CURSOR_PATH" "$HAKU_GTK_THEME_LIGHT" "$HAKU_ICON_THEME_LIGHT"')
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout.splitlines(), ["Haku-Dark", str(self.home / ".icons/Haku-Dark")])
+        self.assertEqual(result.stdout.splitlines(), [
+            "Haku-Dark",
+            str(self.home / ".icons/Haku-Dark"),
+            "Hikaide-Light",
+            "Hikaide-Symbols-Light",
+        ])
+
+    def test_verify_assets_missing_light_gtk_theme(self):
+        self.assert_selected_cursor("Haku-Dark", "dark", "dark")
+        for relative in (".themes/Hikaide", ".icons/Hikaide-Symbols", ".icons/Hikaide-Symbols-Light"):
+            directory = self.home / relative
+            directory.mkdir(parents=True)
+            (directory / "index.theme").touch()
+        result = self.run_shell(f'source "{ROOT}/lib/verify_assets.sh"; verify_assets')
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Hikaide-Light installation missing", result.stderr)
+
+    def test_verify_assets_missing_light_icon_theme(self):
+        self.assert_selected_cursor("Haku-Dark", "dark", "dark")
+        for relative in (".themes/Hikaide", ".themes/Hikaide-Light", ".icons/Hikaide-Symbols"):
+            directory = self.home / relative
+            directory.mkdir(parents=True)
+            (directory / "index.theme").touch()
+        result = self.run_shell(f'source "{ROOT}/lib/verify_assets.sh"; verify_assets')
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Hikaide-Symbols-Light installation missing", result.stderr)
+
+    def test_install_icons_detects_light_theme_for_replace(self):
+        source = self.home / "icons-source"
+        (source / "scripts").mkdir(parents=True)
+        (source / "scripts/build.py").touch()
+        (source / "scripts/validate.py").touch()
+        script = source / "scripts/install.sh"
+        script.write_text('#!/bin/sh\nprintf "%s\\n" "$*"\n')
+        script.chmod(0o755)
+        self.env["HAKU_ICON_THEME_SOURCE"] = str(source)
+
+        # Fresh install (neither variant exists)
+        result = self.run_shell(f'source "{ROOT}/lib/install_icons.sh"; install_icons')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), "")
+
+        # Only light theme exists
+        (self.home / ".icons/Hikaide-Symbols-Light").mkdir(parents=True)
+        result = self.run_shell(f'source "{ROOT}/lib/install_icons.sh"; install_icons')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), "--replace")
 
     def legacy_files(self):
         target = self.home / ".local/bin"

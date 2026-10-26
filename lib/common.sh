@@ -42,7 +42,9 @@ write_manifest() {
         printf 'HAKU_CURSOR_INSTALLED=1\nHAKU_CURSOR_THEME=%q\n' "$HAKU_CURSOR_THEME"
         printf 'HAKU_CURSOR_PATH=%q\n' "$HAKU_CURSOR_DIR"
         printf 'HAKU_GTK_THEME_INSTALLED=1\nHAKU_GTK_THEME=Hikaide\n'
+        printf 'HAKU_GTK_THEME_LIGHT=Hikaide-Light\n'
         printf 'HAKU_ICON_THEME_INSTALLED=1\nHAKU_ICON_THEME=Hikaide-Symbols\n'
+        printf 'HAKU_ICON_THEME_LIGHT=Hikaide-Symbols-Light\n'
         printf 'HAKU_ICON_THEME_DIR=%q\n' "$HOME/.icons"
         for key in CURSOR GTK_THEME ICON_THEME; do
             source="HAKU_${key}_SOURCE"

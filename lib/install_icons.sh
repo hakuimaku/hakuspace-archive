@@ -2,7 +2,8 @@
 
 install_icons() {
     local args=()
-    if [[ -e "$HOME/.icons/Hikaide-Symbols" || -L "$HOME/.icons/Hikaide-Symbols" ]]; then
+    if [[ -e "$HOME/.icons/Hikaide-Symbols" || -L "$HOME/.icons/Hikaide-Symbols" || \
+          -e "$HOME/.icons/Hikaide-Symbols-Light" || -L "$HOME/.icons/Hikaide-Symbols-Light" ]]; then
         args=(--replace)
     fi
     # Upstream validates ownership even with --replace; never bypass that guard.
