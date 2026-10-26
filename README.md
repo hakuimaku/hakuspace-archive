@@ -5,11 +5,6 @@ This repository is the static wallpaper archive for
 
 ## Credits
 
-- GTK theme: [Hikaide](https://github.com/hakuimaku/hikade-gtk-theme)
-- Icons: [Hikaide-Symbols](https://github.com/hakuimaku/hikaide-symbols)
-- Cursor: [Haku Cursor](https://github.com/hakuimaku/haku-cursor)
-- Wallpapers Artists:
-
 <div align="center">
 
 | Artist | Artworks |
