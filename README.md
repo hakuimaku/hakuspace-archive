@@ -17,6 +17,11 @@ This repository is the static wallpaper archive for
 | **[Iriza_Katou](https://www.pixiv.net/en/users/54144505)** | <img width="350" alt="122252287_p0" src="Wallpapers/aesthetic/122252287_p0.jpg" /> <img width="350" alt="145151351_p0" src="Wallpapers/aesthetic/145151351_p0.jpg" /> |
 | **[上周(ShangZhou)](https://www.pixiv.net/en/users/60715675)** | <img width="350" alt="127925987_p0" src="Wallpapers/aesthetic/127925987_p0.jpg" /> |
 | **[Neg](https://www.pixiv.net/en/users/1566023)** | <img width="350" alt="151141595_p0" src="Wallpapers/aesthetic/151141595_p0.jpg" /> |
+| **[masaga](https://www.pixiv.net/en/users/29548952)** | <img width="350" alt="149964124_p0" src="Wallpapers/aesthetic/149964124_p0.jpg" /> |
+| **[行間](https://www.pixiv.net/en/users/30321473)** | <img width="350" alt="151158211_p0" src="Wallpapers/aesthetic/151158211_p0.jpg" /> |
+| **[huhu](https://www.pixiv.net/en/users/98625736)** | <img width="350" alt="151436920_p0" src="Wallpapers/aesthetic/151436920_p0.jpg" /> |
+| **[Solee](https://www.pixiv.net/en/users/129676871)** | <img width="350" alt="151850935_p0" src="Wallpapers/aesthetic/151850935_p0.png" /> <img width="350" alt="151910514_p0" src="Wallpapers/aesthetic/151910514_p0.png" /> |
+| **[小八](https://www.pixiv.net/en/users/90799508)** | <img width="350" alt="152209813_p0" src="Wallpapers/aesthetic/152209813_p0.png" /> |
 
 </div>
 
